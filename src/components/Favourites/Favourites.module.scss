@@ -1,0 +1,49 @@
+.favourite {
+  top: 50px;
+  position: absolute;
+  height: 100vh;
+  width: 95vw;
+
+  .shading {
+    position: fixed;
+    height: 100vh;
+    width: 99vw;
+    backdrop-filter: blur(2px);
+    z-index: 99;
+  }
+
+  .favJokes {
+    padding: 15px;
+    transition: all .8s;
+    position: fixed;
+    overflow-y: scroll;
+    width: 35%;
+    height: 93vh;
+    background-color: #00002b;
+    color: aliceblue;
+    z-index: 100;
+    opacity: 0.8;
+  }
+
+  &.closed {
+    transform: translateX(-110%);
+
+    .favJokes {
+      transform: translateX(-100%);
+    }
+
+  }
+
+  @media screen and (max-width: 768px) {
+    .favJokes {
+      width: 100%;
+      height: 100vh;
+    }
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .favourite {
+    top: 80px;
+  }
+}

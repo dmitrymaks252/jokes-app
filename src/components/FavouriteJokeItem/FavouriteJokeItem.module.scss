@@ -1,0 +1,51 @@
+.favouriteJoke {
+  display: flex;
+  justify-content: space-evenly;
+
+  button {
+    color: white;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .reactionBtns {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    .likeBtn {
+      color: green;
+    }
+
+    .dislikeBtn {
+      color: crimson;
+    }
+  }
+
+  .removeBtn {
+    margin-top: 60px;
+    max-height: 40px;
+  }
+
+  .description {
+    margin: 20px;
+    border-bottom: 1px solid white;
+
+    p {
+      padding: 8px 0;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .removeBtn {
+      margin-top: 90px;
+    }
+  }
+  @media screen and (min-width: 1500px) {
+    .removeBtn {
+      margin-top: 150px;
+    }
+  }
+}

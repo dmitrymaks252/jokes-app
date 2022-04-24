@@ -3,12 +3,16 @@ export type JokeType = {
   type: string
   setup: string
   punchline: string
-  // like: boolean
+  reaction: {
+    like: boolean
+    dislike: boolean
+  }
 }
 
 export type JokesStateType = {
   data: Array<JokeType>
   favouriteJokes: Array<JokeType>
   isLoading: boolean
-  error: null | string
+  error: null | string,
+  isOpened: boolean
 }

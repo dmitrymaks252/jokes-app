@@ -1,0 +1,95 @@
+@mixin burger-button {
+  content: '';
+  position: absolute;
+  width: 20px;
+  background-color: aliceblue;
+  height: 2px;
+}
+
+@mixin wide-burger-button {
+  content: '';
+  position: absolute;
+  width: 30px;
+  background-color: aliceblue;
+  height: 3px;
+}
+
+.navbar {
+  display: flex;
+  background-color: #00002b;
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  z-index: 9;
+  align-items: center;
+
+  .burgerBtn {
+    width: 30px;
+    height: 20px;
+    margin: 0 20px;
+    position: relative;
+    cursor: pointer;
+
+    span {
+      transition: all .8s;
+      @include burger-button;
+      transform: translateY(9px);
+    }
+
+    &::after {
+      transition: all .8s;
+      @include burger-button;
+      top: 0;
+      transform: rotate(360deg);
+    }
+
+    &::before {
+      @include burger-button;
+      bottom: 0;
+    }
+
+    &.opened {
+      transform: scale(1.4) translateX(10px);
+
+      &::before {
+        transition: all .8s;
+        transform: rotate(-45deg) translateY(-13px);
+      }
+
+      &::after {
+        transition: all .8s;
+        transform: rotate(45deg) translateY(12px);
+      }
+
+      span {
+        transition: all .8s;
+        transform: translateX(-10px);
+        opacity: 0;
+      }
+    }
+  }
+
+  .header {
+    color: #ffffff;
+  }
+
+}
+
+@media screen and (min-width: 1500px) {
+  .navbar {
+    height: 80px;
+
+    .burgerBtn {
+      width: 50px;
+
+      span {
+        @include wide-burger-button;
+      }
+
+      &::after,
+      &::before {
+        @include wide-burger-button;
+      }
+    }
+  }
+}

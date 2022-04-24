@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+
+  button {
+    outline: unset;
+    border: none;
+    background-color: unset;
+    font-family: 'Lato', sans-serif;
+    cursor: pointer;
+  }
+
+  .loading {
+    text-align: center;
+    padding-top: 100px;
+    font-size: 2rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+  @media screen and (min-width: 1500px) {
+    font-size: 1.4rem;
+  }
+}

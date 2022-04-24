@@ -1,19 +1,32 @@
 import React, { useEffect } from "react";
 
-import Navbar from "./components/Navbar";
-import Jokes from "./components/Jokes";
-import { useAppDispatch } from "./hooks/hooks";
+import { useAppDispatch, useAppSelector } from "./hooks/hooks";
 import { fetchJokes } from "./store/jokesSlice";
+import { getIsOpened, getJokes, getLoadingStatus } from "./store/selectors/selectors";
+import Navbar from "./components/Navbar/Navbar";
+import Jokes from "./components/Jokes/Jokes";
+import Favourites from "./components/Favourites/Favourites";
+
+import "./App.scss";
 
 export const App = () => {
-  const dispatch = useAppDispatch()
-  useEffect(()=> {
-    dispatch(fetchJokes())
-  }, [dispatch])
+  const isOpened = useAppSelector(getIsOpened);
+  const jokesList = useAppSelector(getJokes);
+  const isLoading = useAppSelector(getLoadingStatus);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchJokes());
+  }, [dispatch]);
+
   return (
     <>
-      <Navbar/>
-      <Jokes/>
+      <Navbar isOpened={isOpened}/>
+      {isLoading
+        ? <h3 className="loading">Loading...</h3>
+        : <Jokes jokesList={jokesList}/>
+      }
+      <Favourites isOpened={isOpened}/>
     </>
   );
-}
+};

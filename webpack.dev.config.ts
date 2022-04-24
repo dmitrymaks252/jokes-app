@@ -32,12 +32,33 @@ const config: Configuration = {
         },
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.scss$/i,
         use: ["style-loader", "css-loader", "sass-loader"],
+        exclude: /\.module\.scss/
       },
       {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.module\.scss/i,
+        use: [
+          {
+            loader: "style-loader"
+          },
+          {
+            loader: "css-loader",
+            options: {
+              modules: {
+                auto: true,
+                localIdentName: "[name]__[local]--[hash:base64:5]",
+              },
+            }
+          },
+          {
+            loader: "sass-loader"
+          }
+        ],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,

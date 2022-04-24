@@ -1,0 +1,32 @@
+.mainPart {
+  padding: 50px;
+
+  .refreshBtn {
+    font-size: 1.5rem;
+    margin: 20px auto;
+    display: flex;
+    align-items: flex-end;
+    bottom: 50px;
+    right: 70px;
+    background-color: rgba(0, 0, 43, 0.72);
+    border-radius: 4px;
+    padding: 8px;
+    color: #fff;
+
+    &:hover {
+      background-color: #00002b;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .mainPart {
+    padding: 50px 20px;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .mainPart {
+    padding: 80px;
+  }
+}

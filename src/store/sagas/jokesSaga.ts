@@ -6,7 +6,8 @@ import { fetchJokesFailure, fetchJokesSuccess } from "../jokesSlice";
 function* workerSaga() {
   try {
     const {data}: AxiosResponse<Array<JokeType>> = yield call(axios, "https://nova-joke-api.netlify.app/.netlify/functions/index/api/programming/ten");
-    yield put(fetchJokesSuccess(data));
+    const favJokesList = JSON.parse(localStorage.getItem("favourites") || "[]");
+    yield put(fetchJokesSuccess({data, favJokesList}));
   } catch (e) {
     window.alert(e);
     if (e instanceof Error) {
